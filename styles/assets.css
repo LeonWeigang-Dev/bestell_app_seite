@@ -42,3 +42,12 @@
     height: 50px;
     width: 50px;
 }
+
+.addButton:hover {
+    transform: scale(1.10);
+    transition: transform 0.3s ease;
+    border-color: #E76C1F;
+    cursor: pointer;
+    border: 2px solid #E76C1F;
+    border-radius: 50px;
+}
