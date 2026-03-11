@@ -1,0 +1,45 @@
+.header {
+    position: absolute;
+    display: flex;
+    height: 60px;
+    width: 100%;
+    background-color: #E76C1F;
+    justify-content: space-between;
+    align-items: center;
+}
+.bgBurgerLogo {
+    position: relative, fixed;
+    display: flex;
+    height: 400px;
+    background-image: url(./assets/img/background_img.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    justify-content: center;
+    align-items: end;
+    z-index: 19;
+}
+.restaurantLogo {
+    position: absolute;
+    z-index: 20;
+    height: 200px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    top: 22%;
+}
+.headlineSection {
+    display: flex;
+    height: 200px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 8vh;
+    padding-bottom: 30px;
+}
+.linkMenu {
+    display: flex;
+    align-items: center;
+    height: 35px;
+    background-color: rgb(170, 165, 165);
+    gap: 20px;
+}
