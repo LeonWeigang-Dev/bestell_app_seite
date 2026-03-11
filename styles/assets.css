@@ -2,11 +2,13 @@
     height: 25px;
     margin: 25px;
 }
+
 .backgroundImg {
     height: 510px;
     width: 100%;
     object-fit: cover;
 }
+
 .headlineTitle {
     display: flex;
     justify-content: center;
@@ -14,10 +16,29 @@
     height: 60px;
     gap: 15px;
 }
+
 .linkButton {
     padding-left: 50px;
     font-size: 20px;
     color: black;
     font-weight: bold;
     border-radius: 20px;
+}
+
+.linkButton:hover {
+    color: #E76C1F;
+    
+}
+
+.dishesImg {
+    padding: 5px;
+    object-fit: cover;
+    height: 120px;
+    width: 210px;
+    border-radius: 12px;
+}
+
+.basketIcon {
+    height: 50px;
+    width: 50px;
 }
