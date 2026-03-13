@@ -78,6 +78,17 @@
     background-color: #E76C1F;
 }
 
+@media (max-width: 940px) {
+    .nav_item {
+    background-color: #124658;
+    border: none;
+    padding-block: 0px;
+    padding-inline: 0px;
+    cursor: pointer;
+    opacity: 0.9;
+}
+}
+
 @media (max-width: 590px) {
     .dishesImg {
         width: 20em;
