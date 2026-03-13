@@ -9,6 +9,16 @@
     object-fit: cover;
 }
 
+.restaurantLogo {
+    position: absolute;
+    z-index: 20;
+    height: 200px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    top: 22%;
+}
+
 .headlineTitle {
     display: flex;
     justify-content: center;
@@ -27,7 +37,7 @@
 
 .linkButton:hover {
     color: #E76C1F;
-    
+
 }
 
 .dishesImg {
@@ -50,4 +60,64 @@
     cursor: pointer;
     border: 2px solid #E76C1F;
     border-radius: 50px;
+}
+
+.basketIcon {
+    height: 15px;
+    width: 15px;
+    cursor: pointer;
+}
+
+.basketIcon:hover {
+    transform: scale(1.10);
+    transition: transform 0.3s ease;
+    border-color: #E76C1F;
+    cursor: pointer;
+    border: 2px solid #E76C1F;
+    border-radius: 50px;
+    background-color: #E76C1F;
+}
+
+@media (max-width: 590px) {
+    .dishesImg {
+        width: 20em;
+        height: 86px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .dishesImg {
+        width: 15em;
+        height: 80px;
+    }
+
+    .restaurantLogo {
+        width: 120px;
+        height: 120px;
+        left: 35%;
+        top: 25%;
+    }
+
+    .headlineTitles {
+        height: 30px;
+    }
+
+    .linkButton {
+        padding-left: 25px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 350px) {
+    .headlineTitles {
+        height: 27px;
+    }
+
+    .restaurantLogo {
+        width: 120px;
+        height: 120px;
+        left: 30%;
+        top: 25%;
+    }
 }

@@ -20,16 +20,6 @@
     z-index: 19;
 }
 
-.restaurantLogo {
-    position: absolute;
-    z-index: 20;
-    height: 200px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    top: 22%;
-}
-
 .headlineSection {
     display: flex;
     height: 200px;
@@ -84,7 +74,7 @@
     margin-bottom: 10px;
     border-radius: 20px;
     margin-left: 100px;
-    width: 710px;
+    width: 80%;
     align-items: center;
     justify-content: start;
     gap: 25px;
@@ -109,6 +99,8 @@
 }
 
 .basketSection {
+    display: flex;
+    justify-content: center;
     width: 400px;
     flex-grow: 1;
     padding: 16px;
@@ -131,10 +123,162 @@
     color: #FDEADC;
 }
 
+.filledBasket {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    width: 100%;
+    height: 600px;
+    border-radius: 20px;
+    background-color: #124658;
+    position: sticky;
+    top: 0;
+    color: #FDEADC;
+}
+
+.basketTitle {
+    display: block;
+}
+
+.basketOrders {
+    overflow: auto;
+    width: 80%;
+    height: 350px;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    margin-left: 6%;
+}
+
+.addedOrder {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: #FDEADC;
+    width: 90%;
+    margin: 10px 0;
+    color: black;
+    gap: 25px;
+}
+
+.basketIcons {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+.costs {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 6%;
+}
+
+.costList {
+    width: 100%;
+}
+
 footer {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 50px;
     background-color: #E76C1F;
+}
+
+@media (max-width: 1253px) {
+    .filledBasket {
+        width: 80%;
+
+    }
+}
+
+@media (max-width: 1000px) {
+    .filledBasket {
+        width: 60%;
+
+    }
+}
+
+@media (max-width: 940px) {
+    .basketSection {
+        display: none;
+    }
+
+    .mainContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .mainContentSection {
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .dishes {
+        margin-left: 0px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 590px) {
+    .dishes {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .dishTitle {
+        padding-top: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .dishesBottom {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding-left: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .mainContentSection {
+        width: 100%;
+    }
+
+    .dishesSections {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .dishes {
+        width: 80%;
+    }
+
+    .headlineSection {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .linkMenu {
+        display: flex;
+        align-items: center;
+        height: 30px;
+        background-color: rgb(170, 165, 165);
+        gap: 15px;
+    }
 }
