@@ -80,13 +80,23 @@
 
 @media (max-width: 940px) {
     .nav_item {
-    background-color: #124658;
-    border: none;
-    padding-block: 0px;
-    padding-inline: 0px;
-    cursor: pointer;
-    opacity: 0.9;
-}
+        background-color: #124658;
+        border: none;
+        padding-block: 0px;
+        padding-inline: 0px;
+        cursor: pointer;
+        opacity: 0.9;
+    }
+
+    .nav_item:hover {
+        transform: scale(1.10);
+        transition: transform 0.3s ease;
+        border-color: #E76C1F;
+        cursor: pointer;
+        border: 2px solid #E76C1F;
+        border-radius: 5px;
+        background-color: #E76C1F;
+    }
 }
 
 @media (max-width: 590px) {
