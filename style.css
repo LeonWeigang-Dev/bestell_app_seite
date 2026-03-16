@@ -1,5 +1,6 @@
 .header {
     position: absolute;
+    max-width: 1920px;
     display: flex;
     height: 60px;
     width: 100%;
@@ -129,12 +130,21 @@
     align-items: center;
     gap: 25px;
     width: 100%;
-    height: 600px;
+    height: 650px;
     border-radius: 20px;
     background-color: #124658;
     position: sticky;
     top: 0;
     color: #FDEADC;
+}
+
+.closeIcons {
+    width: 100%;
+    height: 15px;
+    display: flex;
+    justify-content: end;
+    padding-right: 25px;
+    padding-top: 10px;
 }
 
 .basketTitle {
@@ -175,6 +185,7 @@
     flex-direction: column;
     justify-content: center;
     margin-left: 6%;
+    gap: 20px;
 }
 
 .costList {
@@ -191,6 +202,19 @@ footer {
 
 .nav_bottom_list {
     display: none;
+}
+
+.dialog {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 @media (max-width: 1253px) {
@@ -210,6 +234,22 @@ footer {
 @media (max-width: 940px) {
     .basketSection {
         display: none;
+        width: 400px;
+        flex-grow: 1;
+        padding: 16px;
+        padding-top: 10px;
+        padding-right: 0;
+        z-index: 999;
+    }
+
+    .filledBasket {
+        position: fixed;
+        flex-grow: 1;
+        padding: 16px;
+        padding-top: 10px;
+        padding-right: 0;
+        bottom: 71px;
+        margin-top: 590px;
     }
 
     footer {

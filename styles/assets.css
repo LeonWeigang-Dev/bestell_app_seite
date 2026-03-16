@@ -78,6 +78,60 @@
     background-color: #E76C1F;
 }
 
+.closingButton {
+    height: 15px;
+    width: 15px;
+    cursor: pointer;
+}
+
+.closingButton:hover {
+    transform: scale(1.10);
+    transition: transform 0.3s ease;
+    border-color: #E76C1F;
+    cursor: pointer;
+    border: 2px solid #E76C1F;
+    border-radius: 20px;
+    background-color: #E76C1F;
+}
+
+.buyButton {
+    height: 30px;
+    width: 70%;
+    background-color: #E76C1F;
+    color: white;
+    border-radius: 25px;
+    border-color: #E76C1F;
+    cursor: pointer;
+    margin-left: 30px;
+}
+
+.buyButton:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+    border-color: #000000;
+    cursor: pointer;
+    border: 2px solid #124658;
+    border-radius: 25px;
+    background-color: #000000;
+}
+
+.dialogWindow {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: end;
+    width: 340px;
+    height: 250px;
+    border-radius: 40px;
+    padding: 20px;
+    background-color: #09212A;
+    color: white;
+}
+
+.orderConfirmedText {
+    margin-top: 30px;
+}
+
 @media (max-width: 940px) {
     .nav_item {
         background-color: #124658;
