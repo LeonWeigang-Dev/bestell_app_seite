@@ -1,6 +1,6 @@
-let DishesDB = [
+let dishesDb = [
     {
-        "category": "Burger & Sandwich",
+        "category": "Burger",
         "dishes": [
             {
                 "name": "Veggie mushroom black burger",
@@ -93,6 +93,6 @@ let DishesDB = [
 ]
 
 let cartShopping = [
-
+    { name: "Test Burger", price: 10.00, amount: 1 }
 ]
 
