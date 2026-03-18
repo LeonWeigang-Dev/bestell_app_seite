@@ -93,6 +93,6 @@ let dishesDb = [
 ]
 
 let cartShopping = [
-    { name: "Test Burger", price: 10.00, amount: 1 }
+    
 ]
 
