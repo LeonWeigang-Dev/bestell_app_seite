@@ -1,5 +1,5 @@
 
-function getDishesTemplate(dish, dishIndex, titleIndex) {
+function getDishesTemplate(dish, categoryIndex, dishIndex) {
     return `
         <div class="dishes">
             <div class="dishesImgContainer">
@@ -13,7 +13,7 @@ function getDishesTemplate(dish, dishIndex, titleIndex) {
                     <div class="addBtnContainer">
                         <img class="addButton" 
                              role="button" 
-                             onclick="addToBasket(${dishIndex}, ${titleIndex})" 
+                             onclick="addToBasket(${categoryIndex}, ${dishIndex})" 
                              src="./assets/icons/button_add.png" 
                              alt="Hinzufügen">
                     </div>
@@ -34,50 +34,54 @@ function getDishesTitle(categoryObj, dishIndex) {
 }
 
 function getBasketTemplate() {
- return   `
-                <div class="filledBasket">
-                    <div onclick="toggleBasket()" class="closeIcons"><img role="button" tabindex="0" class="closingButton"
-                            src="./assets/icons/dialog_close_icon.png" alt="Schließen Icon"></div>
-                    <h2 class="basketTitle">Your Order</h2>
-                    <div id="basket_content" class="basketOrders">
-                        <div class="addedOrder">
-                            <div>
-                                <h4>Veggie Burger</h4>
-                            </div>
-                            <div class="basketIcons">
-                                <img class="basketIcon" role="button" tabindex="0" src="./assets/icons/minus_icon.svg"
-                                    alt="minus Icon">
-                                <p>1x</p>
-                                <img class="basketIcon" role="button" tabindex="0" src="./assets/icons/plus_icon.svg"
-                                    alt="plus Icon">
-                                <p>16,90€</p>
-                                <img class="basketIcon" role="button" tabindex="0" src="./assets/icons/delete_icon.png"
-                                    alt="Mülltonnen Icon">
-                            </div>
-                        </div>
-                    </div>
-                    <section class="costs">
-                        <table class="costList">
-                            <tr>
-                                <td>Zwischensumme</td>
-                                <td>16,90€</td>
-                            </tr>
-                            <tr>
-                                <td>Lieferkosten</td>
-                                <td>3,49€</td>
-                            </tr>
-                            <hr>
-                            <tr>
-                                <td>Gesamt</td>
-                                <td>20,39€</td>
-                            </tr>
-                        </table>
-                        <button class="buyButton">
-                            <p>Buy Now (20,39€)</p>
-                        </button>
-                    </section>
-                </div>
-           `
+    return `
+        <div class="filledBasket">
+            <div onclick="toggleBasket()" class="closeIcons">
+                <img role="button" tabindex="0" class="closingButton" src="./assets/icons/dialog_close_icon.png" alt="Schließen Icon">
+            </div>
+            <h2 class="basketTitle">Your Order</h2>
+            
+            <div id="basket_content" class="basketOrders"></div>
+
+            <section class="costs">
+                <table class="costList">
+                    <tr>
+                        <td>Zwischensumme</td>
+                        <td id="subtotal">0,00€</td>
+                    </tr>
+                    <tr>
+                        <td>Lieferkosten</td>
+                        <td id="delivery_costs">0,00€</td>
+                    </tr>
+                    <hr>
+                    <tr>
+                        <td>Gesamt</td>
+                        <td id="total_sum">0,00€</td>
+                    </tr>
+                </table>
+                <button class="buyButton">
+                    <p id="buy_button_text">Buy Now (0,00€)</p>
+                </button>
+            </section>
+        </div>
+    `;
+}
+
+function getBasketItemTemplate(item, i) {
+    return `
+        <div class="addedOrder">
+            <div class="basketItemInfo">
+                <h4>${item.name}</h4>
+            </div>
+            <div class="basketIcons">
+                <img class="basketIcon" onclick="changeAmount(${i}, -1)" src="./assets/icons/minus_icon.svg" alt="minus">
+                <p>${item.amount}x</p>
+                <img class="basketIcon" onclick="changeAmount(${i}, 1)" src="./assets/icons/plus_icon.svg" alt="plus">
+                <p>${(item.price * item.amount).toFixed(2).replace('.', ',')}€</p>
+                <img class="basketIcon" onclick="deleteFromBasket(${i})" src="./assets/icons/delete_icon.png" alt="löschen">
+            </div>
+        </div>
+    `;
 }
 
 function getEmptyBasketTemplate() {
