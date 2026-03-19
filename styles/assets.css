@@ -79,6 +79,7 @@
 }
 
 .closingButton {
+    display: none;
     height: 15px;
     width: 15px;
     cursor: pointer;
@@ -133,6 +134,10 @@
 }
 
 @media (max-width: 940px) {
+    .closingButton {
+        display: flex;
+    }
+
     .nav_item {
         background-color: #124658;
         border: none;

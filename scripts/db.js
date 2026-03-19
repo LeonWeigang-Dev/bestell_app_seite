@@ -92,7 +92,4 @@ let dishesDb = [
     }
 ]
 
-let cartShopping = [
-    
-]
 

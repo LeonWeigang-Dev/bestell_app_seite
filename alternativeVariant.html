@@ -35,65 +35,18 @@
                 <p>The best of Burgers, Pizza, and Greens, all in one great place.</p>
             </section>
             <section class="linkMenu">
-                <a class="linkButton" href="#burgerId">Burger</a>
-                <a class="linkButton" href="#pizzaId">Pizza</a>
-                <a class="linkButton" href="#saladId">Salads</a>
+                <a class="linkButton" href="#BurgerId">Burger</a>
+                <a class="linkButton" href="#PizzaId">Pizza</a>
+                <a class="linkButton" href="#SaladId">Salads</a>
             </section>
         </section>
 
         <div class="mainContainer">
-            <section id="main_content" class="mainContentSection">
-
-            <section class="basketSection">
-                <!-- <div class="basket" >
-                <h3>Your Basket</h3>
-                <p>Noting here yet. <br> Go ahead and choose something delicious!</p>
-                <img class="basketIcon" src="./assets/icons/shopping_cart.png" alt="Icon von Einkaufswagen">
-                </div> -->
-                <div class="filledBasket">
-                    <div class="closeIcons"><img role="button" tabindex="0" class="closingButton"
-                            src="./assets/icons/dialog_close_icon.png" alt="Schließen Icon"></div>
-                    <h2 class="basketTitle">Your Order</h2>
-                    <div id="basket_content" class="basketOrders">
-                        <div class="addedOrder">
-                            <div>
-                                <h4>Veggie mushroom black burger</h4>
-                            </div>
-                            <div class="basketIcons">
-                                <img class="basketIcon" role="button" tabindex="0" src="./assets/icons/minus_icon.svg"
-                                    alt="minus Icon">
-                                <p>1x</p>
-                                <img class="basketIcon" role="button" tabindex="0" src="./assets/icons/plus_icon.svg"
-                                    alt="plus Icon">
-                                <p>16,90€</p>
-                                <img class="basketIcon" role="button" tabindex="0" src="./assets/icons/delete_icon.png"
-                                    alt="Mülltonnen Icon">
-                            </div>
-                        </div>
-                    </div>
-                    <section class="costs">
-                        <table class="costList">
-                            <tr>
-                                <td>Zwischensumme</td>
-                                <td>16,90€</td>
-                            </tr>
-                            <tr>
-                                <td>Lieferkosten</td>
-                                <td>3,49€</td>
-                            </tr>
-                            <hr>
-                            <tr>
-                                <td>Gesamt</td>
-                                <td>20,39€</td>
-                            </tr>
-                        </table>
-                        <button class="buyButton">
-                            <p>Buy Now (20,39€)</p>
-                        </button>
-                    </section>
-                </div>
-            </section>
-            <!-- <dialog class="dialog" onclick="openDialog()">
+            <section id="main_content" class="mainContentSection"></section>
+                <section id="basket" class="basketSection">
+                </section>
+        </div>
+        <!-- <dialog class="dialog" onclick="openDialog()">
                 <div class="dialogWindow">
                         <img class="closingButton" role="button" tabindex="0" src="./assets/icons/dialog_close_icon.png" alt="">
                     <section class="orderConfirmedText">
@@ -102,7 +55,6 @@
                     </section>
                 </div>
             </dialog> -->
-        </div>
     </main>
     <footer>
         <p>© 2026 BestellApp. Alle Rechte vorbehalten.</p>
@@ -111,13 +63,13 @@
         <button class="nav_item" onclick="location.href='./index.html'">
             <img src="./assets/icons/home_icon.svg" alt="Haus Icon">
         </button>
-        <button class="nav_item">
+        <button onclick="toggleBasket()" class="nav_item">
             <img src="./assets/icons/shopping_cart_icon.svg" alt="Einkaufswagen Icon">
         </button>
         <button class="nav_item">
             <img src="./assets/icons/takeout_dining_icon.svg" alt="Icon vom Logo">
         </button>
-        <button class="nav_item" onclick="openBasket()">
+        <button class="nav_item">
             <img src="./assets/icons/person_icon.svg" alt="Person Icon">
         </button>
     </section>

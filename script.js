@@ -1,24 +1,19 @@
 function init() {
     renderDishes();
+    renderBasket();
 }
 
 const deliveryFee = 3.49;
 
 function renderDishes() {
     let content = document.getElementById('main_content');
-    if (!content) return; // Securitycheck
+    if (!content) return;
     content.innerHTML = "";
 
     for (let dishIndex = 0; dishIndex < dishesDb.length; dishIndex++) {
         let categoryObj = dishesDb[dishIndex];
 
-        content.innerHTML += `
-            <div class="sectionTitle">
-                <h2 id="${categoryObj.category}Id" class="title">${categoryObj.category}</h2>
-            </div>
-            <section id="category_section_${dishIndex}" class="dishesSections">
-                </section>
-        `;
+        content.innerHTML += getDishesTitle(categoryObj, dishIndex);
 
         let categorySection = document.getElementById(`category_section_${dishIndex}`);
 
@@ -27,4 +22,22 @@ function renderDishes() {
             categorySection.innerHTML += getDishesTemplate(dish, dishIndex, titleIndex);
         }
     }
+}
+
+function renderBasket() {
+    let content = document.getElementById('basket');
+    /* if (!content) return; */
+    content.innerHTML = "";
+
+    content.innerHTML += getBasketTemplate();
+}
+
+function chooseBasketTemplate() {
+    content.innerHTML = "";
+
+}
+
+function toggleBasket() {
+  let element = document.getElementById('basket')
+    element.style.display = element.style.display === "flex" ? "none" : "flex";
 }
