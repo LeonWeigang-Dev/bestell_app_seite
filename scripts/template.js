@@ -12,8 +12,10 @@ function getDishesTemplate(dish, categoryIndex, dishIndex) {
                     <p class="dishPrice">${dish.price.toFixed(2).replace('.', ',')}€</p>
                     <div class="addBtnContainer">
                         <img class="addButton" 
-                             role="button" 
-                             onclick="addToBasket(${categoryIndex}, ${dishIndex})" 
+                             role="button" tabindex="0"
+                             aria-label="Hinzufügen Button"
+                             onclick="addToBasket(${categoryIndex}, ${dishIndex})"
+                             onkeyup ="if(event.key === 'Enter') addToBasket(${categoryIndex}, ${dishIndex})"
                              src="./assets/icons/button_add.png" 
                              alt="Hinzufügen">
                     </div>
@@ -74,11 +76,11 @@ function getBasketItemTemplate(item, i) {
                 <h4>${item.name}</h4>
             </div>
             <div class="basketIcons">
-                <img class="basketIcon" onclick="changeAmount(${i}, -1)" src="./assets/icons/minus_icon.svg" alt="minus">
+                <img class="basketIcon" aria-label="minus Button" tabindex="0" onkeyup ="if(event.key === 'Enter') changeAmount(${i}, -1)" onclick="changeAmount(${i}, -1)" src="./assets/icons/minus_icon.svg" alt="minus">
                 <p>${item.amount}x</p>
-                <img class="basketIcon" onclick="changeAmount(${i}, 1)" src="./assets/icons/plus_icon.svg" alt="plus">
+                <img class="basketIcon" aria-label="plus Button" tabindex="0" onkeyup ="if(event.key === 'Enter') changeAmount(${i}, 1)" onclick="changeAmount(${i}, 1)" src="./assets/icons/plus_icon.svg" alt="plus">
                 <p>${(item.price * item.amount).toFixed(2).replace('.', ',')}€</p>
-                <img class="basketIcon" onclick="deleteFromBasket(${i})" src="./assets/icons/delete_icon.png" alt="löschen">
+                <img class="basketIcon" aria-label="löschen Button" tabindex="0" onkeyup ="if(event.key === 'Enter') deleteFromBasket(${i})" onclick="deleteFromBasket(${i})" src="./assets/icons/delete_icon.png" alt="löschen">
             </div>
         </div>
     `;
