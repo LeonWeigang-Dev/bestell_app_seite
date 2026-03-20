@@ -9,156 +9,147 @@ function renderDishes() {
     if (!content) return;
     content.innerHTML = "";
 
-    for (let dishIndex = 0; dishIndex < dishesDb.length; dishIndex++) {
-        let categoryObj = dishesDb[dishIndex];
+    for (let i = 0; i < dishesDb.length; i++) {
+        let categoryObj = dishesDb[i];
+        content.innerHTML += getDishesTitle(categoryObj, i);
 
-        content.innerHTML += getDishesTitle(categoryObj, dishIndex);
-
-        let categorySection = document.getElementById(`category_section_${dishIndex}`);
-
-        for (let titleIndex = 0; titleIndex < categoryObj.dishes.length; titleIndex++) {
-            let dish = categoryObj.dishes[titleIndex];
-            categorySection.innerHTML += getDishesTemplate(dish, dishIndex, titleIndex);
+        let section = document.getElementById('category_section_' + i);
+        for (let j = 0; j < categoryObj.dishes.length; j++) {
+            let dish = categoryObj.dishes[j];
+            section.innerHTML += getDishesTemplate(dish, i, j);
         }
     }
 }
-
 function renderBasket() {
     let basketRef = document.getElementById('basket');
     if (!basketRef) return;
 
     if (cartShopping.length > 0) {
         basketRef.innerHTML = getBasketTemplate();
-
-        let basketContent = document.getElementById('basket_content');
-        let subtotal = 0;
-
-        for (let i = 0; i < cartShopping.length; i++) {
-            let item = cartShopping[i];
-            subtotal += item.price * item.amount;
-            basketContent.innerHTML += getBasketItemTemplate(item, i);
-        }
-
-        renderTotals(subtotal);
+        fillBasket();
     } else {
         basketRef.innerHTML = getEmptyBasketTemplate();
     }
     updateBadge();
 }
 
-function chooseBasketTemplate() {
-    let basketRef = document.getElementById('basket');
-    if (!basketRef) return;
+function fillBasket() {
+    let basketContent = document.getElementById('basket_content');
+    let subtotal = 0;
 
-    if (cartShopping.length > 0) {
-        basketRef.innerHTML = getBasketTemplate();
-    } else {
-        basketRef.innerHTML = getEmptyBasketTemplate();
+    for (let i = 0; i < cartShopping.length; i++) {
+        let item = cartShopping[i];
+        subtotal = subtotal + (item.price * item.amount);
+        basketContent.innerHTML += getBasketItemTemplate(item, i);
     }
-}
-
-function toggleBasket() {
-    let element = document.getElementById('basket')
-    element.style.display = element.style.display === "flex" ? "none" : "flex";
+    renderTotals(subtotal);
 }
 
 function addToBasket(categoryIndex, dishIndex) {
-    let selectedDish = dishesDb[categoryIndex].dishes[dishIndex];
+    let dish = dishesDb[categoryIndex].dishes[dishIndex];
+    let foundIndex = -1;
 
-    let findDish = cartShopping.find(item => item.name === selectedDish.name);
-
-    if (findDish) {
-        findDish.amount++;
-    } else {
-        cartShopping.push({
-            name: selectedDish.name,
-            price: selectedDish.price,
-            amount: 1
-        });
+    for (let i = 0; i < cartShopping.length; i++) {
+        if (cartShopping[i].name === dish.name) {
+            foundIndex = i;
+        }
     }
-    saveCart();
-    renderBasket();
+
+    if (foundIndex > -1) {
+        cartShopping[foundIndex].amount++;
+    } else {
+        let newItem = { name: dish.name, price: dish.price, amount: 1 };
+        cartShopping.push(newItem);
+    }
+    updateUI();
 }
 
 function changeAmount(i, change) {
-    cartShopping[i].amount += change;
-
+    cartShopping[i].amount = cartShopping[i].amount + change;
     if (cartShopping[i].amount <= 0) {
-        deleteFromBasket(i);
-    } else {
-        renderBasket();
+        cartShopping.splice(i, 1);
     }
-    saveCart();
+    updateUI();
 }
 
 function deleteFromBasket(i) {
     cartShopping.splice(i, 1);
+    updateUI();
+}
+
+function updateUI() {
     saveCart();
     renderBasket();
 }
 
 function renderTotals(subtotal) {
-    const delivery = subtotal > 0 ? 3.49 : 0;
-    const total = subtotal + delivery;
+    let delivery = 3.49;
+    if (subtotal === 0) { delivery = 0; }
+    let total = subtotal + delivery;
 
-    let subtotalRef = document.getElementById('subtotal');
-    let deliveryRef = document.getElementById('delivery_costs');
-    let totalRef = document.getElementById('total_sum');
-    let buyButtonRef = document.getElementById('buy_button_text');
+    document.getElementById('subtotal').innerHTML = formatPrice(subtotal);
+    document.getElementById('delivery_costs').innerHTML = formatPrice(delivery);
+    document.getElementById('total_sum').innerHTML = formatPrice(total);
 
-    if (subtotalRef) subtotalRef.innerHTML = `${subtotal.toFixed(2).replace('.', ',')}€`;
-    if (deliveryRef) deliveryRef.innerHTML = `${delivery.toFixed(2).replace('.', ',')}€`;
-    if (totalRef) totalRef.innerHTML = `${total.toFixed(2).replace('.', ',')}€`;
-    if (buyButtonRef) buyButtonRef.innerHTML = `Buy Now (${total.toFixed(2).replace('.', ',')}€)`;
+    let buttonText = document.getElementById('buy_button_text');
+    buttonText.innerHTML = "Buy Now (" + formatPrice(total) + ")";
+}
+
+function formatPrice(price) {
+    let formatted = price.toFixed(2).replace('.', ',');
+    return formatted + "€";
 }
 
 function buyButton() {
-    if (cartShopping.length === 0) return;
+    if (cartShopping.length > 0) {
+        cartShopping = [];
+        updateUI();
 
-    document.body.innerHTML += getDialogTemplate();
+        document.body.innerHTML += getDialogTemplate();
+        let dialog = document.querySelector('.dialog');
 
-    const dialog = document.querySelector('.dialog');
-    if (dialog) {
-        dialog.showModal();
+        if (dialog) {
+            dialog.showModal();
+            setTimeout(function () {
+                dialog.close();
+                dialog.remove();
+            }, 4000);
+        }
     }
-
-    cartShopping = [];
-    saveCart();
-    renderBasket();
 }
 
-function openDialog() {
-    const dialog = document.querySelector('.dialog');
-    if (dialog) {
-        dialog.close();
-        dialog.remove();
+function toggleBasket() {
+    let element = document.getElementById('basket');
+    if (element.style.display === "flex") {
+        element.style.display = "none";
+    } else {
+        element.style.display = "flex";
     }
 }
 
 function saveCart() {
-    let cartAsText = JSON.stringify(cartShopping);
-    localStorage.setItem('cart', cartAsText);
+    let text = JSON.stringify(cartShopping);
+    localStorage.setItem('cart', text);
 }
 
 function loadCart() {
-    let cartAsText = localStorage.getItem('cart');
-    if (cartAsText) {
-        cartShopping = JSON.parse(cartAsText);
+    let text = localStorage.getItem('cart');
+    if (text) {
+        cartShopping = JSON.parse(text);
     }
 }
-
 function updateBadge() {
     let badge = document.getElementById('basket_badge');
     if (!badge) return;
 
-    let totalAmount = 0;
+    let total = 0;
     for (let i = 0; i < cartShopping.length; i++) {
-        totalAmount += cartShopping[i].amount;
+        total = total + cartShopping[i].amount;
     }
 
-    if (totalAmount > 0) {
+    if (total > 0) {
         badge.style.display = "flex";
-        badge.innerHTML = totalAmount;
+        badge.innerHTML = total;
     } else {
         badge.style.display = "none";
     }

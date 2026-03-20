@@ -98,11 +98,13 @@ function getEmptyBasketTemplate() {
 function getDialogTemplate() {
     return `<dialog class="dialog" onclick="openDialog()">
                 <div class="dialogWindow">
-                        <img class="closingButton" role="button" tabindex="0" src="./assets/icons/dialog_close_icon.png" alt="">
                     <section class="orderConfirmedText">
                         <img src="./assets/icons/dialog_delivery_icon.png" alt="Lieferwagen Icon">
                         <img src="./assets/icons/ordered_text.png" alt="Order Confirmed Text">
                     </section>
+                    <div class="progress-container">
+                    <div class="progress-bar"></div>
+                </div>
                 </div>
             </dialog>`
 }
