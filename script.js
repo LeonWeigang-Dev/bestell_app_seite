@@ -3,8 +3,6 @@ function init() {
     renderBasket();
 }
 
-const deliveryFee = 3.49;
-
 function renderDishes() {
     let content = document.getElementById('main_content');
     if (!content) return;
@@ -93,4 +91,20 @@ function changeAmount(i, change) {
 function deleteFromBasket(i) {
     cartShopping.splice(i, 1);
     renderBasket();
+}
+
+function renderTotals(subtotal) {
+    const delivery = subtotal > 0 ? 3.49 : 0; // Lieferkosten nur berechnen, wenn der Korb nicht leer ist
+    const total = subtotal + delivery;
+
+    // Zugriff auf die IDs aus dem getBasketTemplate
+    let subtotalRef = document.getElementById('subtotal');
+    let deliveryRef = document.getElementById('delivery_costs');
+    let totalRef = document.getElementById('total_sum');
+    let buyButtonRef = document.getElementById('buy_button_text');
+
+    if (subtotalRef) subtotalRef.innerHTML = `${subtotal.toFixed(2).replace('.', ',')}€`;
+    if (deliveryRef) deliveryRef.innerHTML = `${delivery.toFixed(2).replace('.', ',')}€`;
+    if (totalRef) totalRef.innerHTML = `${total.toFixed(2).replace('.', ',')}€`;
+    if (buyButtonRef) buyButtonRef.innerHTML = `Buy Now (${total.toFixed(2).replace('.', ',')}€)`;
 }

@@ -86,6 +86,9 @@ function getBasketItemTemplate(item, i) {
 
 function getEmptyBasketTemplate() {
     return `<div class="filledBasket" >
+                <div onclick="toggleBasket()" class="closeIcons">
+                <img role="button" tabindex="0" class="closingButton" src="./assets/icons/dialog_close_icon.png" alt="Schließen Icon">
+            </div>
                 <h3>Your Order</h3>
                 <p>Noting here yet. <br> Go ahead and choose something delicious!</p>
                 <img class="basketIcon" src="./assets/icons/shopping_cart.png" alt="Icon von Einkaufswagen">
