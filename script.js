@@ -20,6 +20,7 @@ function renderDishes() {
         }
     }
 }
+
 function renderBasket() {
     let basketRef = document.getElementById('basket');
     if (!basketRef) return;
@@ -138,6 +139,7 @@ function loadCart() {
         cartShopping = JSON.parse(text);
     }
 }
+
 function updateBadge() {
     let badge = document.getElementById('basket_badge');
     if (!badge) return;
