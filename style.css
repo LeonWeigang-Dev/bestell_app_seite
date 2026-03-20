@@ -239,8 +239,13 @@ footer {
 }
 
 @keyframes shrink {
-    from { width: 100%; }
-    to { width: 0%; }
+    from {
+        width: 100%;
+    }
+
+    to {
+        width: 0%;
+    }
 }
 
 @media (max-width: 1920px) {
@@ -410,5 +415,5 @@ footer {
         margin-left: 0;
     }
 
-    
+
 }
