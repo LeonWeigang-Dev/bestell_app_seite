@@ -129,6 +129,22 @@
     color: white;
 }
 
+.basket-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #c01111;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .orderConfirmedText {
     margin-top: 30px;
 }
@@ -187,6 +203,14 @@
         padding-left: 25px;
         font-size: 20px;
     }
+}
+
+@media (max-width: 375px) {
+    .buyButton {
+        margin-left: 0;
+    }
+
+
 }
 
 @media (max-width: 350px) {

@@ -59,7 +59,7 @@ function getBasketTemplate() {
                         <td id="total_sum">0,00€</td>
                     </tr>
                 </table>
-                <button class="buyButton">
+                <button onclick="buyButton()" class="buyButton">
                     <p id="buy_button_text">Buy Now (0,00€)</p>
                 </button>
             </section>
@@ -93,4 +93,16 @@ function getEmptyBasketTemplate() {
                 <p>Noting here yet. <br> Go ahead and choose something delicious!</p>
                 <img class="basketIcon" src="./assets/icons/shopping_cart.png" alt="Icon von Einkaufswagen">
                 </div>`
+}
+
+function getDialogTemplate() {
+    return `<dialog class="dialog" onclick="openDialog()">
+                <div class="dialogWindow">
+                        <img class="closingButton" role="button" tabindex="0" src="./assets/icons/dialog_close_icon.png" alt="">
+                    <section class="orderConfirmedText">
+                        <img src="./assets/icons/dialog_delivery_icon.png" alt="Lieferwagen Icon">
+                        <img src="./assets/icons/ordered_text.png" alt="Order Confirmed Text">
+                    </section>
+                </div>
+            </dialog>`
 }

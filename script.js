@@ -1,4 +1,5 @@
 function init() {
+    loadCart();
     renderDishes();
     renderBasket();
 }
@@ -42,6 +43,7 @@ function renderBasket() {
     } else {
         basketRef.innerHTML = getEmptyBasketTemplate();
     }
+    updateBadge();
 }
 
 function chooseBasketTemplate() {
@@ -74,7 +76,7 @@ function addToBasket(categoryIndex, dishIndex) {
             amount: 1
         });
     }
-
+    saveCart();
     renderBasket();
 }
 
@@ -86,18 +88,19 @@ function changeAmount(i, change) {
     } else {
         renderBasket();
     }
+    saveCart();
 }
 
 function deleteFromBasket(i) {
     cartShopping.splice(i, 1);
+    saveCart();
     renderBasket();
 }
 
 function renderTotals(subtotal) {
-    const delivery = subtotal > 0 ? 3.49 : 0; // Lieferkosten nur berechnen, wenn der Korb nicht leer ist
+    const delivery = subtotal > 0 ? 3.49 : 0;
     const total = subtotal + delivery;
 
-    // Zugriff auf die IDs aus dem getBasketTemplate
     let subtotalRef = document.getElementById('subtotal');
     let deliveryRef = document.getElementById('delivery_costs');
     let totalRef = document.getElementById('total_sum');
@@ -107,4 +110,56 @@ function renderTotals(subtotal) {
     if (deliveryRef) deliveryRef.innerHTML = `${delivery.toFixed(2).replace('.', ',')}€`;
     if (totalRef) totalRef.innerHTML = `${total.toFixed(2).replace('.', ',')}€`;
     if (buyButtonRef) buyButtonRef.innerHTML = `Buy Now (${total.toFixed(2).replace('.', ',')}€)`;
+}
+
+function buyButton() {
+    if (cartShopping.length === 0) return;
+
+    document.body.innerHTML += getDialogTemplate();
+
+    const dialog = document.querySelector('.dialog');
+    if (dialog) {
+        dialog.showModal();
+    }
+
+    cartShopping = [];
+    saveCart();
+    renderBasket();
+}
+
+function openDialog() {
+    const dialog = document.querySelector('.dialog');
+    if (dialog) {
+        dialog.close();
+        dialog.remove();
+    }
+}
+
+function saveCart() {
+    let cartAsText = JSON.stringify(cartShopping);
+    localStorage.setItem('cart', cartAsText);
+}
+
+function loadCart() {
+    let cartAsText = localStorage.getItem('cart');
+    if (cartAsText) {
+        cartShopping = JSON.parse(cartAsText);
+    }
+}
+
+function updateBadge() {
+    let badge = document.getElementById('basket_badge');
+    if (!badge) return;
+
+    let totalAmount = 0;
+    for (let i = 0; i < cartShopping.length; i++) {
+        totalAmount += cartShopping[i].amount;
+    }
+
+    if (totalAmount > 0) {
+        badge.style.display = "flex";
+        badge.innerHTML = totalAmount;
+    } else {
+        badge.style.display = "none";
+    }
 }

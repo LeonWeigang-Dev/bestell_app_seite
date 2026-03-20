@@ -43,8 +43,8 @@
 
         <div class="mainContainer">
             <section id="main_content" class="mainContentSection"></section>
-                <section id="basket" class="basketSection">
-                </section>
+            <section id="basket" class="basketSection">
+            </section>
         </div>
         <!-- <dialog class="dialog" onclick="openDialog()">
                 <div class="dialogWindow">
@@ -63,8 +63,9 @@
         <button class="nav_item" onclick="location.href='./index.html'">
             <img src="./assets/icons/home_icon.svg" alt="Haus Icon">
         </button>
-        <button onclick="toggleBasket()" class="nav_item">
+        <button onclick="toggleBasket()" class="nav_item" style="position: relative;">
             <img src="./assets/icons/shopping_cart_icon.svg" alt="Einkaufswagen Icon">
+            <div id="basket_badge" class="basket-badge" style="display: none;">0</div>
         </button>
         <button class="nav_item">
             <img src="./assets/icons/takeout_dining_icon.svg" alt="Icon vom Logo">
